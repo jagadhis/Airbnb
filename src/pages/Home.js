@@ -43,7 +43,7 @@ const Home = () => {
               defaultOptionIndex={0}
               onChange={(data) => Setdestination(data.label)}
               options={[
-                { id: "NYC", label: "New York City" },
+                { id: "NYC", label: "New York " },
                 { id: "AUS", label: "Australia" },
                 { id: "MLD", label: "Maldives" },
                 { id: "BA", label: "Bali" },
@@ -94,7 +94,8 @@ const Home = () => {
       <div className="randomLocation">
         <div className="title">Feel Adventours</div>
         <div className="text">
-          Let us decide and discover new places to stay,live,work or just relax
+          Let us decide and discover new places to stay, live, work or just
+          relax
         </div>
         <Button
           text="Explore a Location"

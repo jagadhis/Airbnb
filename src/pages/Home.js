@@ -3,7 +3,7 @@ import "./Home.css";
 import { Link } from "react-router-dom";
 import bg from "../images/frontpagebg.png";
 import logo from "../images/airbnb.png";
-import { useState } from "react";
+
 import { ConnectButton, Icon, Select, DatePicker, Input } from "web3uikit";
 const Home = () => {
   const [checkIn, setCheckIn] = useState(new Date());

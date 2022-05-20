@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Rentals.css";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router";
 import logo from "../images/airbnbRed.png";
 import { ConnectButton, Icon, Button } from "web3uikit";
+import { useMoralis, useWeb3ExecuteFunction } from "react-moralis";
 import RentalsMap from "../components/RentalsMap";
 const Rentals = () => {
   const { state: searchFilters } = useLocation();
@@ -27,6 +28,8 @@ const Rentals = () => {
   rentalsList.forEach((e) => {
     cords.push({ lat: e.attributes.lat, lng: e.attributes.long });
   });
+
+  useEffect(() => {}, [searchFilters]);
   return (
     <>
       <div className="topBanner">

@@ -4,7 +4,14 @@ import { Link } from "react-router-dom";
 import bg from "../images/frontpagebg.png";
 import logo from "../images/airbnb.png";
 
-import { ConnectButton, Icon, Select, DatePicker, Input } from "web3uikit";
+import {
+  ConnectButton,
+  Icon,
+  Select,
+  DatePicker,
+  Input,
+  Button,
+} from "web3uikit";
 const Home = () => {
   const [checkIn, setCheckIn] = useState(new Date());
   const [CheckOut, setCheckout] = useState(new Date());
@@ -83,6 +90,16 @@ const Home = () => {
             </div>
           </Link>
         </div>
+      </div>
+      <div className="randomLocation">
+        <div className="title">Feel Adventours</div>
+        <div className="text">
+          Let us decide and discover new places to stay,live,work or just relax
+        </div>
+        <Button
+          text="Explore a Location"
+          onClick={() => console.log(CheckOut)}
+        />
       </div>
     </>
   );

@@ -6,6 +6,10 @@ import logo from "../images/airbnb.png";
 import { useState } from "react";
 import { ConnectButton, Icon, Select, DatePicker, Input } from "web3uikit";
 const Home = () => {
+  const [checkIn, setCheckIn] = useState(new Date());
+  const [CheckOut, setCheckout] = useState(new Date());
+  const [destination, Setdestination] = useState("New York City");
+  const [guests, Setguests] = useState(2);
   return (
     <>
       <div className="container" style={{ backgroundImage: `url(${bg})` }}>
@@ -30,7 +34,7 @@ const Home = () => {
             Location
             <Select
               defaultOptionIndex={0}
-              onChange={(data) => console.log(data.label)}
+              onChange={(data) => Setdestination(data.label)}
               options={[
                 { id: "NYC", label: "New York City" },
                 { id: "AUS", label: "Australia" },
@@ -44,7 +48,7 @@ const Home = () => {
             Check In
             <DatePicker
               id="CheckIn"
-              onChange={(event) => console.log(event.date)}
+              onChange={(event) => setCheckIn(event.date)}
             />
           </div>
           <div className="vl" />
@@ -52,7 +56,7 @@ const Home = () => {
             Check Out
             <DatePicker
               id="CheckOut"
-              onChange={(event) => console.log(event.date)}
+              onChange={(event) => setCheckout(event.date)}
             />
           </div>
           <div className="vl" />
@@ -62,12 +66,22 @@ const Home = () => {
               value={2}
               name="AddGuests"
               type="number"
-              onChange={(event) => console.log(Number(event.target.value))}
+              onChange={(event) => Setguests(Number(event.target.value))}
             />
           </div>
-          <div className="searchButton">
-            <Icon fill="#ffffff" size={22} svg="search" />
-          </div>
+          <Link
+            to={"/rentals"}
+            state={{
+              destination: destination,
+              checkIn: checkIn,
+              checkOut: CheckOut,
+              guests: guests,
+            }}
+          >
+            <div className="searchButton">
+              <Icon fill="#ffffff" size={22} svg="search" />
+            </div>
+          </Link>
         </div>
       </div>
     </>

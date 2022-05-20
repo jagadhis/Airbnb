@@ -22,6 +22,10 @@ const Rentals = () => {
       },
     },
   ];
+  let cords = [];
+  rentalsList.forEach((e) => {
+    cords.push({ lat: e.attributes.lat, lng: e.attributes.long });
+  });
   return (
     <>
       <div className="topBanner">
@@ -91,7 +95,7 @@ const Rentals = () => {
             })}
         </div>
         <div className="rentalsContentR">
-          <RentalsMap />
+          <RentalsMap locations={cords} />
         </div>
       </div>
     </>

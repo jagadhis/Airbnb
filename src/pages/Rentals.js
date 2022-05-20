@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Rentals.css";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router";
@@ -7,6 +7,7 @@ import { ConnectButton, Icon, Button } from "web3uikit";
 import RentalsMap from "../components/RentalsMap";
 const Rentals = () => {
   const { state: searchFilters } = useLocation();
+  const [highlight, setHighlight] = useState();
   const rentalsList = [
     {
       attributes: {
@@ -67,11 +68,11 @@ const Rentals = () => {
         <div className="rentalsContentL">
           Stays Available For your destination
           {rentalsList &&
-            rentalsList.map((e) => {
+            rentalsList.map((e, i) => {
               return (
                 <>
                   <hr className="line2" />
-                  <div className="rentalDiv">
+                  <div className={highlight == i ? "rentalDivH" : "rentalDiv"}>
                     <img className="rentalImg" src={e.attributes.imgUrl}></img>
                     <div className="rentalInfo">
                       <div className="rentalTitle">{e.attributes.name}</div>
@@ -95,7 +96,7 @@ const Rentals = () => {
             })}
         </div>
         <div className="rentalsContentR">
-          <RentalsMap locations={cords} />
+          <RentalsMap locations={cords} setHighlight={setHighlight} />
         </div>
       </div>
     </>
